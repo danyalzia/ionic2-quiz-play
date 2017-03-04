@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Quiz</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<div *ngIf='!authStatus'>
+<h3>You need to sign-in (from Sign-in page) to see the questions</h3>
+	</div>
+	<div *ngIf='authStatus'>
+<ion-slides #slides>
+
+		<ion-slide>
+			<button ion-button color="primary" (click)="changeSlide()">Start Quiz!</button>
+		</ion-slide>
+
+		<ion-slide *ngFor="let question of questionArray; let i = index;">
+			<h3>Question {{i+1}}</h3>
+			<h3>{{question.questionText}}</h3>
+
+			<ion-list no-lines radio-group>
+				<ion-item>
+					<ion-label>1. {{question.firstChoice}}</ion-label>
+					<ion-radio (click)="selectAnswer(question, 'first', question.firstChoice)" [checked]="selectFirst" [disabled]="answeredFinally"></ion-radio>
+				</ion-item>
+				<ion-item>
+					<ion-label>2. {{question.secondChoice}}</ion-label>
+					<ion-radio (click)="selectAnswer(question, 'second', question.secondChoice)" [checked]="selectSecond" [disabled]="answeredFinally"></ion-radio>
+				</ion-item>
+				<ion-item>
+					<ion-label>3. {{question.thirdChoice}}</ion-label>
+					<ion-radio (click)="selectAnswer(question, 'third', question.thirdChoice)" [checked]="selectThird" [disabled]="answeredFinally"></ion-radio>
+				</ion-item>
+				<ion-item>
+					<ion-label>4. {{question.fourthChoice}}</ion-label>
+					<ion-radio (click)="selectAnswer(question, 'fourth', question.fourthChoice)" [checked]="selectFourth" [disabled]="answeredFinally"></ion-radio>
+				</ion-item>
+
+			</ion-list>
+
+		</ion-slide>
+
+		<ion-slide>
+			<h2>Your Final Score: {{score}}</h2>
+			<button (click)="restartQuiz()" ion-button full color="primary">Start Quiz Again</button>
+		</ion-slide>
+</ion-slides>
+</div>
+
+</ion-content>

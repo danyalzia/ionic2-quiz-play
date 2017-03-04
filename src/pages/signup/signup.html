@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign-up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h3>Sign-up to edit the questions</h3>
+	
+<form [formGroup]="myForm" (ngSubmit)="onSignup()">
+      <ion-item>
+        <ion-label>E-Mail</ion-label>
+        <ion-input formControlName="email" type="email" id="email" #email class="form-control"></ion-input>
+		<span *ngIf="!email.pristine && email.errors != null && email.errors['noEmail']">Invalid mail address</span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input formControlName="password" type="password" id="password" class="form-control"></ion-input>
+      </ion-item>
+	  <ion-item>
+        <ion-label for="confirm-password">Confirm Password</ion-label>
+        <ion-input formControlName="confirmPassword" type="password" id="confirm-password" #confirmPassword class="form-control"></ion-input>
+		<span *ngIf="!confirmPassword.pristine && confirmPassword.errors != null && confirmPassword.errors['passwordsNotMatch']">Passwords do not match</span>
+      </ion-item>
+      <button ion-button type="submit" [disabled]="!myForm.valid">Sign up</button>
+    </form>
+</ion-content>

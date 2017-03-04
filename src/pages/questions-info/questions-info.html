@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      {{email}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p>Question: <strong>{{question}}</strong></p>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-content>
+      <p>First Choice: <strong>{{firstChoice}}</strong></p>
+	  <p>Second Choice: <strong>{{secondChoice}}</strong></p>
+	  <p>Third Choice: <strong>{{thirdChoice}}</strong></p>
+	  <p>Fourth Choice: <strong>{{fourthChoice}}</strong></p>
+	  <p>Correct Answer: <strong>{{correct}}</strong></p>
+    </ion-card-content>
+  </ion-card>
+  
+  <button ion-button (click)="delete()">Delete it</button>
+</ion-content>

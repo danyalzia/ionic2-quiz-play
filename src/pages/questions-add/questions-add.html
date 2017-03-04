@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+  	<ion-title>
+  		Add Question
+  	</ion-title>
+    	<ion-buttons end>
+    		<button ion-button icon-only (click)="close()"><ion-icon name="close"></ion-icon></button>
+    	</ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+
+	  <ion-item>
+	    <ion-label floating>Question</ion-label>
+	    <ion-input type="text" [(ngModel)]=question></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Answers</ion-label>
+		<ion-input type="text" placeholder="First Choice" [(ngModel)]=first>First Choice: </ion-input>
+		<ion-input type="text" placeholder="Second Choice" [(ngModel)]=second>Second Choice: </ion-input>
+		<ion-input type="text" placeholder="Third Choice" [(ngModel)]=third>Third Choice: </ion-input>
+		<ion-input type="text" placeholder="Fourth Choice" [(ngModel)]=fourth>Fourth Choice: </ion-input>
+	  </ion-item>
+
+	</ion-list>
+	
+	<ion-list radio-group [(ngModel)]="choices">
+	<ion-item>
+    <ion-label>First Choice</ion-label>
+    <ion-radio value="first" checked></ion-radio>
+	</ion-item>
+	<ion-item>
+    <ion-label>Second Choice</ion-label>
+    <ion-radio value="second"></ion-radio>
+	</ion-item>
+	<ion-item>
+    <ion-label>Third Choice</ion-label>
+    <ion-radio value="third"></ion-radio>
+	</ion-item>
+	<ion-item>
+    <ion-label>Fourth Choice</ion-label>
+    <ion-radio value="fourth"></ion-radio>
+	</ion-item>
+	</ion-list>
+	
+	<button full ion-button color="secondary" (click)="storeItem()">Save</button> 
+
+	<div padding>
+      <b>Selected Choice for Answer: </b> {{choices}}
+    </div>
+
+</ion-content>

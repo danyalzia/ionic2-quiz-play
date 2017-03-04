@@ -1,0 +1,38 @@
+<ion-header>
+
+    <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign-in</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<div *ngIf='!authStatus'>
+	<h3>You need to login to see the edit questions data</h3>
+    <form (ngSubmit)="login()">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input [(ngModel)]="userEmail"
+                           type="email" name="userEmail"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Password</ion-label>
+                <ion-input [(ngModel)]="userPassword"
+                           type="password" name="userPassword"></ion-input>
+            </ion-item>
+
+            <hr/>
+            <button type="submit" ion-button>Login!</button>
+        </ion-list>
+    </form>
+	</div>
+	<div *ngIf='authStatus'>
+		<button (click)='logout()' ion-button>Logout</button>
+	</div>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Questions</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div *ngIf='!authStatus'>
+	<h3>You need to login to see the Questions</h3>
+    <form (ngSubmit)="login()">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input [(ngModel)]="userEmail"
+                           type="email" name="userEmail"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Password</ion-label>
+                <ion-input [(ngModel)]="userPassword"
+                           type="password" name="userPassword"></ion-input>
+            </ion-item>
+
+            <hr/>
+            <button type="submit" ion-button>Login!</button>
+        </ion-list>
+    </form>
+	</div>
+	<div *ngIf='authStatus'>
+	<p>Current User: {{userEmail}}</p>
+	<button ion-button (click)="addQuestion()">Add Question</button>
+	
+	<ion-list>
+		<ion-item *ngFor="let item of questionArray" (click)="showQuestion(item)">
+		  <p>Question: <strong>{{item.questionText}}</strong></p>
+		  <p>First Choice: <strong>{{item.firstChoice}}</strong></p>
+		  <p>Second Choice: <strong>{{item.secondChoice}}</strong></p>
+		  <p>Third Choice: <strong>{{item.thirdChoice}}</strong></p>
+		  <p>Fourth Choice: <strong>{{item.fourthChoice}}</strong></p>
+		</ion-item>
+	</ion-list>
+	
+	<button (click)='logout()' ion-button>Logout</button>
+	</div>
+</ion-content>
